@@ -10,7 +10,9 @@ This repository gives de detailed code for the two ESP32 Embedded systems that c
 
 ## Overview
 
-<img src="images/completed_device.JPEG" alt="Completed Device" width="600">
+<div align="center">
+  <img src="images/completed_device.JPEG" alt="Completed Device" width="600">
+</div>
 
 *Figure: Example diagram of the ESP32 system setup.*
 
