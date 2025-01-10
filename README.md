@@ -1,7 +1,7 @@
 
-# ESP32 Closed-Loop Control and Human-Machine Interface (HMI) System
+# Radiant Infant Warmer (Based in Phoenix NOC-100) 
 
-This repository contains two main Arduino code files for an ESP32-based project:
+This repository gives de detailed code for the two ESP32 Embedded systems that controls the HMI and Closed loop control system:
 
 1. **ClosedLoop.ino**: Implements a closed-loop control system with Blynk integration for monitoring and control.
 2. **HMI.ino**: Provides a human-machine interface (HMI) for user interaction and display management.
