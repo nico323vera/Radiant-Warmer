@@ -10,6 +10,10 @@ This repository contains two main Arduino code files for an ESP32-based project:
 
 ## Overview
 
+![Completed Device](images/completed_device.jpeg)
+
+*Figure: Example diagram of the ESP32 system setup.*
+
 ### 1. ClosedLoop.ino
 
 This file is responsible for the core closed-loop control functionality. It integrates with the Blynk IoT platform for remote control and monitoring.
