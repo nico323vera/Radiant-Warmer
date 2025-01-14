@@ -1,12 +1,6 @@
+# Open Incubator Temperature Control System
 
-# Radiant Infant Warmer (Based in Phoenix NOC-100) 
-
-This repository gives de detailed code for the two ESP32 Embedded systems that controls the HMI and Closed loop control system:
-
-1. **ClosedLoop.ino**: Implements a closed-loop control system with Blynk integration for monitoring and control.
-2. **HMI.ino**: Provides a human-machine interface (HMI) for user interaction and display management.
-
----
+An ESP32-based temperature control system for a PHOENIX NOC-100 open incubator, featuring IoT capabilities and a touchscreen interface.
 
 ## Overview
 
@@ -16,63 +10,75 @@ This repository gives de detailed code for the two ESP32 Embedded systems that c
 
 *Figure: Completed device based in Phoenix NOC100.*
 
-### 1. ClosedLoop.ino
+This project implements a digital temperature control system for a neonatal open incubator. It includes:
 
-This file is responsible for the core closed-loop control functionality. It integrates with the Blynk IoT platform for remote control and monitoring.
+- PID temperature control with 0.1°C resolution
+- 7-inch touchscreen HMI interface
+- IoT monitoring and control capabilities
+- Real-time temperature monitoring and alarms
+- Emergency stop functionality
 
-#### Features:
-- **Blynk Integration**: Control setpoints and monitor system parameters remotely.
-- **Curve Corrections**: Implements curve adjustments for fine-tuning control.
-- **ESP-NOW Communication**: Facilitates wireless communication between devices.
-- **Sampling Time Control**: Utilizes precise timing for system updates.
+## Hardware Components
 
-#### Setup:
-- Replace `TEMPLATE_ID`, `TEMPLATE_NAME`, and `AUTH_TOKEN` with your Blynk credentials.
-- Update Wi-Fi credentials (`ssid` and `password`) to match your network.
+- ESP32 microcontrollers (2x)
+- Elecrow CrowPanel 7.0" HMI Display
+- Draeger MU06951 skin temperature sensor
+- TRIAC-based power control circuit
+- Custom PCB for signal conditioning and power management
 
----
+## Features
 
-### 2. HMI.ino
+### Temperature Control
+- Operating range: 36.0°C - 38.0°C
+- Resolution: 0.1°C
+- Accuracy: ±0.3°C (compliant with NTC-IEC 60601-2-21)
+- Digital PID control with anti-windup
 
-This file handles the user interface on a local display connected to the ESP32. It uses the LVGL library for graphical interface rendering.
+### Safety Features
+- Emergency stop button
+- Multiple alarm conditions:
+  - High temperature (>39°C)
+  - Low temperature (<35°C)
+  - Sensor failure
+  - Heater failure
+  - Emergency stop activation
 
-#### Features:
-- **Graphical UI**: Leverages LVGL and Squareline Studio for advanced UI design.
-- **ESP-NOW Communication**: Synchronizes data with other ESP32 modules.
-- **Real-Time Display**: Updates system status and user inputs dynamically.
+### IoT Capabilities
+- Remote temperature monitoring
+- Setpoint adjustment
+- Real-time data logging
+- Web interface for medical staff
+- Engineering access mode
 
-#### Setup:
-- Ensure the required LVGL UI files (e.g., `ui.h`) are included in your project.
-- Connect a compatible TFT display to the ESP32, configuring the backlight pin as needed (`TFT_BL`).
+## Software Architecture
 
----
+The system consists of two main components:
 
-## Getting Started
+### Control Module (ClosedLoop.ino)
+- Temperature measurement and filtering
+- PID control implementation
+- TRIAC firing control
+- ESP-NOW communication
+- Blynk IoT integration
 
-1. **Prerequisites**:
-   - Arduino IDE or PlatformIO for code editing and uploading.
-   - ESP32 development board.
-   - Required libraries:
-     - `WiFi`
-     - `esp_now`
-     - `BlynkSimpleEsp32`
-     - `lvgl`
-     - `Arduino_GFX_Library`
+### HMI Module (HMI.ino)
+- Touch interface management
+- Alarm display
+- Temperature and power visualization
+- ESP-NOW communication with control module
 
-2. **Hardware Setup**:
-   - Connect the ESP32 to your Wi-Fi network.
-   - Attach a TFT display to the ESP32 for the HMI.
+## Installation
 
-3. **Code Upload**:
-   - Open `ClosedLoop.ino` or `HMI.ino` in your preferred IDE.
-   - Modify the code as per your setup.
-   - Upload the code to the ESP32 board.
-
-4. **Testing**:
-   - Use the Blynk app to interact with the closed-loop control system.
-   - Observe the HMI display for real-time system feedback.
-
----
+1. Clone this repository
+2. Install required libraries:
+   - ESP32 Arduino Core
+   - LVGL
+   - Arduino_GFX_Library
+   - Blynk
+   - ESP-NOW
+3. Configure WiFi credentials and Blynk tokens in both .ino files
+4. Upload ClosedLoop.ino to the control ESP32
+5. Upload HMI.ino to the display ESP32
 
 ## Dependencies
 
@@ -84,8 +90,31 @@ This file handles the user interface on a local display connected to the ESP32. 
   - LVGL: [LVGL Documentation](https://lvgl.io)
   - Arduino GFX Library: [Arduino_GFX Documentation](https://github.com/moononournation/Arduino_GFX)
 
----
+## Usage
 
-## License
+1. Power on the system
+2. Wait for the initialization sequence
+3. Set desired temperature using the touchscreen
+4. Monitor temperature and alarms through the display
+5. Use web interface for remote monitoring (optional)
 
-This project is open-source and available under the [MIT License](LICENSE).
+## Contributing
+
+This project is part of a thesis work for the Universidad Autónoma de Bucaramanga. Contributions are welcome through pull requests.
+
+## Documentation & Resources
+
+- [Complete Project Documentation](http://hdl.handle.net/20.500.12749/26793) - Detailed technical documentation and implementation details
+- [PCB Design Files](https://oshwlab.com/nico323vera/proyectodegradoincubadorafinalcopy_2024-04-15_17-19-56) - Circuit schematics and PCB layout files
+
+## Authors
+
+- Nicolás Vera Amador
+- Carlos Daniel Yi Villamizar
+
+## Acknowledgments
+
+- M.Sc. Hernando Gonzalez Acevedo (Director)
+- Clínica FOSCAL Internacional
+
+## 
